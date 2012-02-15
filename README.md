@@ -11,7 +11,10 @@ If the Task detects that it would be overwriting a file then it prompts you for 
 Usage
 -----
 To generate models for all of the tables in your database
+
 	php oil migrate orm 
 
+
 To generate a model for just one table
+
 	php oil migrate orm:generate_model table_name
