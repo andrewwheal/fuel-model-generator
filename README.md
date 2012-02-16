@@ -12,9 +12,9 @@ Usage
 -----
 To generate models for all of the tables in your database
 
-	php oil migrate orm 
+	php oil refine orm 
 
 
 To generate a model for just one table
 
-	php oil migrate orm:generate_model table_name
+	php oil refine orm:generate_model table_name
