@@ -147,7 +147,7 @@ class Orm
 					case 'varchar':
 					case 'tinytext':
 					case 'tinyblob':
-						isset($column_validation['max_length']) and $column_form['maxlength'] = $column_validation['max_length'];
+						isset($column_validation['max_length']) and $column_form['maxlength'] = $column_validation['max_length'][0];
 						break;
 
 					case 'text':
