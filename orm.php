@@ -98,7 +98,7 @@ class Orm
 				'null'      => $column['null'],
 			);
 
-			$column['default'] and $model_properties[$column['name']]['default'] = $column['default'];
+			$column['default'] and $column_properties['default'] = $column['default'];
 
 			// Validation
 			// TODO: Add thresholds rather than having rediculously high max values
