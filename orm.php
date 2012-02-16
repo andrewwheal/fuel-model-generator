@@ -141,6 +141,8 @@ class Orm
 			}*/
 			else
 			{
+				$column['default'] and $column_form['value'] = $column['default'];
+				
 				switch ($column_type)
 				{
 					case 'char':
