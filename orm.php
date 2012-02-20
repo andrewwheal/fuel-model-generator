@@ -211,6 +211,8 @@ class Orm
 class Model_{$table_class} extends \Orm\Model
 {
 
+	protected static \$_table_name = '{$table_name}';
+
 	protected static \$_properties = {$model_properties_str};
 
 	protected static \$_observers = array(
