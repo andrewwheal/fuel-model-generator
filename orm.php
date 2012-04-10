@@ -43,19 +43,19 @@ class Orm
 		'time_mysql',
 	);
 
-	public function run()
+	public function run($db = null)
 	{
-		$tables = \DB::list_tables();
+		$tables = \DB::list_tables(null, $db);
 
 		\Cli::write('Found '.count($tables).' database tables to generate models for.', 'green');
 
 		foreach ($tables as $table)
 		{
-			$this->generate_model($table);
+			$this->generate_model($table, $db);
 		}
 	}
 
-	public function generate_model($table_name)
+	public function generate_model($table_name, $db = null)
 	{
 		$table_class = \Inflector::classify($table_name);
 
@@ -75,7 +75,7 @@ class Orm
 			}
 		}
 
-		$columns = \DB::list_columns($table_name);
+		$columns = \DB::list_columns($table_name, null, $db);
 
 		\Cli::write('Found '.count($columns)." columns for the {$table_name} database table.", 'green');
 
@@ -142,7 +142,7 @@ class Orm
 			else
 			{
 				$column['default'] and $column_form['value'] = $column['default'];
-				
+
 				switch ($column_type)
 				{
 					case 'char':
