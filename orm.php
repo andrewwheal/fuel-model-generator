@@ -203,7 +203,8 @@ class Orm
 			$model_properties[$column['name']] = $column_properties;
 		}
 
-		$model_properties_str = str_replace(array("\n", '  '), array("\n\t", "\t"), \Format::forge($model_properties)->to_php());
+		$model_properties_str = str_replace(array("\n", '  ', 'array ('), array("\n\t", "\t", 'array('), \Format::forge($model_properties)->to_php());
+		$model_properties_str = preg_replace('/=>\s+array/m', '=> array', $model_properties_str);
 
 		$model_str = <<<MODEL
 <?php
