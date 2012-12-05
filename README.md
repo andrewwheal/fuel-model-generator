@@ -10,7 +10,7 @@ If the Task detects that it would be overwriting a file then it prompts you for 
 
 Usage
 -----
-To generate models for all of the tables in your database. This task currently only works with the MySQLi driver, you can set up a secondary connection on you DB config files and specify the name as '<code>db_connection</code>'.
+To generate models for all of the tables in your database. This task **currently only works with the MySQLi driver**, you can set up a secondary connection on you DB config files and specify the name as '<code>db_connection</code>'.
 
 	php oil refine orm db_connection
 
