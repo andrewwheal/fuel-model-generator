@@ -55,8 +55,14 @@ class Orm
 		}
 	}
 
-	public function generate_model($table_name, $db = null)
+	public function generate_model($table_name = null, $db = null)
 	{
+		if ( ! $table_name)
+		{
+			\Cli::write('Please specify a table', 'red');
+			exit;
+		}
+
 		$table_class = \Inflector::classify($table_name);
 
 		// Generate the full path for the model
@@ -86,7 +92,7 @@ class Orm
 			list($column_type, $column_unsigned) = explode(' ', $column['data_type'] . ' '); // Concatenated space stops an error happening when data_type has no spaces
 
 			// A hack to detect Bool data types
-			if ($column_type == 'tinyint' and $column['display'] == 1)
+			if ($column_type == 'tinyint' and ! empty($column['display']) and $column['display'] == 1)
 			{
 				$column_type = 'bool';
 			}
@@ -109,7 +115,7 @@ class Orm
 			{
 				$column_validation = array('required');
 			}
-			elseif (key_exists($column_type, static::$string_max_lengths))
+			elseif (key_exists($column_type, static::$string_max_lengths) and isset($column['character_maximum_length']))
 			{
 				$column_validation['max_length'] = array( (int) min($column['character_maximum_length'], static::$string_max_lengths[$column_type]));
 			}
@@ -261,8 +267,6 @@ MODEL;
 
 		// Show people just how clever FuelPHP can be
 		\File::update(dirname($file_path), basename($file_path), $model_str);
-
-		return true;
 	}
 
 }
