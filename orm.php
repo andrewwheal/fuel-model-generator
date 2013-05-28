@@ -218,11 +218,11 @@ class Model_{$table_class} extends \Orm\Model
 
 	protected static \$_observers = array(
 		'Orm\Observer_Validation' => array(
-            'events' => array('before_save'),
-        ),
+			'events' => array('before_save'),
+		),
 		'Orm\Observer_Typing' => array(
-            'events' => array('before_save', 'after_save', 'after_load'),
-        ),
+			'events' => array('before_save', 'after_save', 'after_load'),
+		),
 MODEL;
 
 		if (isset($model_properties['created_at']))
@@ -230,10 +230,10 @@ MODEL;
 			$model_str .= <<<MODEL
 
 		'Orm\Observer_CreatedAt' => array(
-	        'events' => array('before_insert'),
-	        'mysql_timestamp' => false,
-	        'property' => 'created_at',
-	    ),
+			'events' => array('before_insert'),
+			'mysql_timestamp' => false,
+			'property' => 'created_at',
+		),
 MODEL;
 		}
 
@@ -242,10 +242,10 @@ MODEL;
 			$model_str .= <<<MODEL
 
 		'Orm\Observer_UpdatedAt' => array(
-	        'events' => array('before_save'),
-	        'mysql_timestamp' => false,
-	        'property' => 'updated_at',
-	    ),
+			'events' => array('before_save'),
+			'mysql_timestamp' => false,
+			'property' => 'updated_at',
+		),
 MODEL;
 		}
 
